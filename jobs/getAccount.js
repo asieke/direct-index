@@ -9,10 +9,12 @@ const alpaca = new Alpaca({
 });
 
 alpaca.getAccount().then((account) => {
-  console.log("Current Account:", account);
+  let query = "INSERT INTO account_balances (balance) VALUES ($1)";
+  pool.query(query, [account.equity]);
+  pool.end();
 });
 
-(function () {
-  pool.query("INSERT INTO stocks (ticker) VALUES ('FB')");
-  return;
-})();
+//
+
+// pool.query(query);
+// pool.end();
