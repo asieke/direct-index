@@ -8,6 +8,9 @@
     "start": "node index",
     "fetchData": "node jobs/getAccount.js"
   },
+  "engines": {
+    "node": "17.0.1"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {

@@ -13,8 +13,3 @@ alpaca.getAccount().then((account) => {
   pool.query(query, [account.equity]);
   pool.end();
 });
-
-//
-
-// pool.query(query);
-// pool.end();
