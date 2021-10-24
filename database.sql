@@ -13,3 +13,19 @@ CREATE TABLE account_balances(
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   balance float
 );
+
+CREATE TABLE orders(
+  id UUID,
+  client_order_id VARCHAR(255),
+  created_at VARCHAR(255),
+  submitted_at VARCHAR(255),
+  filled_at VARCHAR(255),
+  asset_id VARCHAR(255),
+  symbol VARCHAR(16),
+  notional FLOAT,
+  qty FLOAT,
+  filled_qty FLOAT,
+  filled_avg_price FLOAT,
+  type VARCHAR(16),
+  side VARCHAR(16)
+);
