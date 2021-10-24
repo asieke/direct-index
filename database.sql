@@ -29,3 +29,11 @@ CREATE TABLE orders(
   type VARCHAR(16),
   side VARCHAR(16)
 );
+
+CREATE TABLE assets(
+  id UUID,
+  symbol VARCHAR(16),
+  name VARCHAR(255),
+  status VARCHAR(32),
+  fractionable BOOLEAN
+);
