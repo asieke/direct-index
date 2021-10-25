@@ -31,7 +31,7 @@ CREATE TABLE orders(
 );
 
 CREATE TABLE assets(
-  id UUID,
+  id UUID UNIQUE,
   symbol VARCHAR(16),
   name VARCHAR(255),
   status VARCHAR(32),

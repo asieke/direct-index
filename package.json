@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index",
-    "fetchData": "node jobs/getAccount.js"
+    "updateAssets": "node jobs/updateAssets.js"
   },
   "engines": {
     "node": "17.0.1"
