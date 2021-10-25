@@ -2,12 +2,6 @@
 --heroku pg:psql postgresql-regular-68990 --app direct-index
 CREATE DATABASE direct_index;
 
---\c into direct_index
-CREATE TABLE stocks(
-  stock_id SERIAL PRIMARY KEY,
-  ticker VARCHAR(255)
-);
-
 CREATE TABLE account_balances(
   account_balance_id SERIAL PRIMARY KEY,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -38,11 +32,20 @@ CREATE TABLE assets(
   fractionable BOOLEAN
 );
 
-CREATE TABLE stockdata(
+CREATE TABLE stocks(
+  id SERIAL PRIMARY KEY,
   symbol VARCHAR(16) UNIQUE,
   name VARCHAR(255),
   sector VARCHAR(255),
   industry VARCHAR(255),
   coutry VARCHAR(255),
-  shares FLOAT
+  status VARCHAR(255),
+  tradable BOOLEAN,
+  fractionable BOOLEAN,
+  shares FLOAT,
+  last_trade FLOAT,
+  market_cap FLOAT,
+  best_bid FLOAT,
+  best_ask FLOAT,
+  spread FLOAT
 );

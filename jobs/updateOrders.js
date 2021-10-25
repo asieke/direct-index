@@ -1,8 +1,11 @@
-const { pool, alpaca } = require("./_connections.js");
+/**************************************
+ * jobs/updateOrders.js
+ * pull all closed orders from Alpaca
+ * insert into "orders" table
+ * Runs ad hoc
+ ***************************************/
 
-/**************************
- * Job that appends any new filled orders
- *************************/
+const { pool, alpaca } = require("./_connections.js");
 
 const updateOrders = async () => {
   //query postgres and get the most recently added order
