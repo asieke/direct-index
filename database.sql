@@ -24,14 +24,6 @@ CREATE TABLE orders(
   side VARCHAR(16)
 );
 
-CREATE TABLE assets(
-  id UUID UNIQUE,
-  symbol VARCHAR(16),
-  name VARCHAR(255),
-  status VARCHAR(32),
-  fractionable BOOLEAN
-);
-
 CREATE TABLE stocks(
   id SERIAL PRIMARY KEY,
   symbol VARCHAR(16) UNIQUE,
@@ -42,6 +34,7 @@ CREATE TABLE stocks(
   status VARCHAR(255),
   tradable BOOLEAN,
   fractionable BOOLEAN,
+  duplicate BOOLEAN,
   shares FLOAT,
   last_trade FLOAT,
   market_cap FLOAT,
@@ -49,3 +42,4 @@ CREATE TABLE stocks(
   best_ask FLOAT,
   spread FLOAT
 );
+

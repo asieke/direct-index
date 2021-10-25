@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index",
-    "updateAssets": "node jobs/updateAssets.js"
+    "start": "node index"
   },
   "engines": {
     "node": "17.0.1"
