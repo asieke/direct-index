@@ -37,3 +37,12 @@ CREATE TABLE assets(
   status VARCHAR(32),
   fractionable BOOLEAN
 );
+
+CREATE TABLE stockdata(
+  symbol VARCHAR(16) UNIQUE,
+  name VARCHAR(255),
+  sector VARCHAR(255),
+  industry VARCHAR(255),
+  coutry VARCHAR(255),
+  shares FLOAT
+);
