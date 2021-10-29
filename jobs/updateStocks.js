@@ -4,7 +4,6 @@
  * insert into the stocks table
  * Runs DAILY
  ***************************************/
-
 const { pool, alpaca } = require("./_connections.js");
 const axios = require("axios");
 

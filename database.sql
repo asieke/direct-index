@@ -43,3 +43,12 @@ CREATE TABLE stocks(
   spread FLOAT
 );
 
+
+select
+o.symbol,
+sum(case when side='buy' then filled_qty else 0 end) - sum(case when side='sell' then filled_qty else 0 end) as current,
+sum(case when side='buy' then filled_qty else 0 end) - sum(case when side='sell' then filled_qty else 0 end) * max(s.last_trade) as market_value
+from orders o
+left join stocks s on o.symbol = s.symbol
+group by o.symbol
+having sum(case when side='buy' then filled_qty else 0 end) - sum(case when side='sell' then filled_qty else 0 end) > 0
