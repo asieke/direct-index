@@ -5,7 +5,7 @@
  * RUNS every 10min
  ***************************************/
 
-const { pool, alpacaOptions } = require("./_connections.js");
+const { pool, alpacaOptions, alpacaUrls } = require("./_connections.js");
 const axios = require("axios");
 
 const updatePrices = async () => {
@@ -16,7 +16,8 @@ const updatePrices = async () => {
     for (let i = 0; i < symbols.length; i += 250) {
       console.log("pulling prices: " + i + "-" + (i + 250));
       let url =
-        "https://data.alpaca.markets/v2/stocks/snapshots?symbols=" +
+        alpacaUrls.data +
+        "/v2/stocks/snapshots?symbols=" +
         symbols.slice(i, i + 250).join(",");
 
       const response = await axios.get(url, alpacaOptions);
