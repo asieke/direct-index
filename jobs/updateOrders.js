@@ -9,10 +9,14 @@ const { pool, alpacaOptions, alpacaUrls } = require("./_connections.js");
 const axios = require("axios");
 
 const main = async () => {
-  let maxDate = await getMostRecentOrderDate();
-  let orders = await getOrders(maxDate);
-  await insertOrdersIntoDB(orders);
-  pool.end();
+  try {
+    let maxDate = await getMostRecentOrderDate();
+    let orders = await getOrders(maxDate);
+    await insertOrdersIntoDB(orders);
+    pool.end();
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 //takes an array of order values and inserts them into the DB
@@ -26,6 +30,7 @@ const insertOrdersIntoDB = async (orders) => {
   }
 };
 
+//pulls a list of all orders (not currently in DB) from Alpaca
 const getOrders = async (after) => {
   let path = `/v2/orders?after=${after}&limit=500&status=closed&direction=asc`;
   const response = await axios.get(alpacaUrls.stock + path, alpacaOptions);
@@ -46,6 +51,7 @@ const getOrders = async (after) => {
   ]);
 };
 
+//returns the most recent order date from the DB
 const getMostRecentOrderDate = async () => {
   var result = await pool.query("SELECT max(submitted_at) FROM orders");
   var maxDate = (await result.rows[0].max)
@@ -54,9 +60,4 @@ const getMostRecentOrderDate = async () => {
   return maxDate;
 };
 
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
+main();
